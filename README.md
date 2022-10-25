@@ -10,11 +10,12 @@ A **ATIKS** é uma empresa de Gestão de Custos de Telecomunicações e tem em s
 
 A interface do projeto foi desenvolvida como software desktop, pois será utilziada em uma máquina que realizará as atividades de automação. Em uma segunda versão do projeto podemos pensar em algo com interface web.
 
-O projeto está organizado da seguinte forma:
-- main.py
-- interface.py
-- mapa.py
-- baixa[operadora].py
+O projeto está organizado em um único arquivo [main.py], em classes, conforme segue:
+- App(tk.Tk): classe que cria a tela de acesso, interação e registro dos logs
+  - class Content_Frame(ttk.Frame): classe que cria o frame de conteúdo, com os botões, listas e comandos
+  - class LogInfo_Frame(ttk.Frame):
+  - 
+- def SearchList(cliente, portal, mes): lista os números de NRC que devem ser baixados do site
 
 ## Status do Projeto
 

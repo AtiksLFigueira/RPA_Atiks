@@ -88,10 +88,10 @@ Longo Prazo (30/06/23) >> Não Iniciado
 ## 5. Tecnologias utilizadas
 
 O projeto utiliza Python junto com as seguintes bibliotecas:
-- Pandas: ler o mapa de faturas e selecionar as faturas pendentes | Ler o arquivo de Setup
-- Openpyxl: ler e escerver no arquivo do mapa de faturas
-- Tkinter: criar a tela do programa
-- Selenium: automatiza funções do driver do navegador | simula um operador mexendo no navegador
+- [Pandas](https://pandas.pydata.org/docs/): ler o mapa de faturas e selecionar as faturas pendentes | Ler o arquivo de Setup
+- [Openpyxl](https://openpyxl.readthedocs.io/en/stable/): ler e escerver no arquivo do mapa de faturas
+- [Tkinter](https://tkdocs.com/): criar a tela do programa
+- [Selenium](https://www.selenium.dev/documentation/): automatiza funções do driver do navegador | simula um operador mexendo no navegador
 
 
 ## 6. Equipe do Projeto

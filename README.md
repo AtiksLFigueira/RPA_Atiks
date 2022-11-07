@@ -21,18 +21,17 @@ O programa foi desenvolvido em Phyton e estruturado em 4 diferentes fases, cada 
 
 ## 1. Descrição do Projeto
 
-Desenvolvimento realizado em Phyton. Primeira versão com software desktop que roda somente na máquina destinada para automação.
-O processo prevê interações manuais de um operador, conforme abaixo:
+Desenvolvimento realizado em Phyton. Primeira versão com software desktop que roda somente na máquina destinada para automação. O processo prevê interações manuais de um operador. Existe uma planilha de Setup.xlxs que contém as informações dos clientes e dos portais. O software carrega a lista de opções da tela principal de acordo com a configuração da planilha Setup.xlxs.
 
 ### 1.1 Processo
 
-- Operador copiar o mapa de faturas atualizado da pasta do cliente no Google para a pasta local, onde o programa está instalado. O mapa não deve ser alterado até que finalize a execução.
-- Operador abre o programa RPA Atiks no ícone, selecionar o Cliente, Portal e Mês. Clica no botão Baixar.
+- Operador copiar o mapa de faturas atualizado da pasta do cliente no Google Drive para a pasta local na máquina destinada ao RPA, onde o programa está instalado. O mapa não deve ser alterado na rede até que finalize a execução e volte a versão atualizada.
+- Operador abre o programa RPA Atiks, selecionar o Cliente, Portal e Mês. Clica no botão Baixar.
 - Programa verifica no mapa quais as faturas estão pendentes para o Portal selecionado.
-- Programa abre o Portal da Operadora e realiza login informações de usuário e senha. Cada Portal tem a sua particularidade.
+- Programa abre o Portal da Operadora e realiza o login com informações de usuário e senha.
 - Programa busca as faturas para baixar e realiza o download em pasta Download pré-configurada.
-- Programa renomeia o arquivo com o padrão RPA_Portal_NoFatura e altera para pasta Renomeado.
-- Programa marca o mapa de faturas como Status Baixa = Concluído e Observações = "RPA"
+- Programa renomeia o arquivo com o padrão de cada cliente e altera para pasta Renomeado. (não ok)
+- Programa marca o mapa de faturas como Status Baixa = Concluído e Observações = "RPA" (não ok)
 - Operador seleciona outros cliente e outros portais caso necessário | Programa repete operações para opções selecionadas.
 - Operador transfere os arquivos da pasta Renomeado para o Google Drive, na pasta correta de acordo com a organização atual.
 - Operador transfere o mapa salvo e atualziado para a pasta do cliente no Google Drive.
@@ -40,31 +39,36 @@ O processo prevê interações manuais de um operador, conforme abaixo:
 
 ### 1.2 Organização da Aplicação
 
-O projeto está organizado em um único arquivo [main.py], em classes, conforme segue:
-- App(tk.Tk): classe que cria a tela de acesso, interação e registro dos logs
-  - class Content_Frame(ttk.Frame): classe que cria o frame de conteúdo, com os botões, listas e comandos
-  - class LogInfo_Frame(ttk.Frame):
-  - 
-- def SearchList(cliente, portal, mes): lista os números de NRC que devem ser baixados do site
+O projeto está organizado em um único arquivo [main.py], em classes e funções, conforme segue:
+  - class App(tk.Tk): cria a tela de acesso e configura tamanho dos frames
+  - class Content_Frame(ttk.Frame): cria o frame de conteúdo, com os botões, listas e comandos. Todas as funções da baixa das faturas estão contidas nesta classe.
+    - def frameNRC(self): função que verifica no mapa quais faturas estão pendentes.
+    - def driverSetUp(self): configura o driver do chrome e acessa o portal. Configura a pasta de download.
+    - def acceptAllCookies(self): se o portal tiver um comunicado de aceitar os cookies, esta função trata.
+    - def login(self): realiza o login no portal
+    - def download(self, nfaturas): baixa as faturas de acordo com a lista pendente.
+  - class LogInfo_Frame(ttk.Frame): cria o frame de log do software.
+
 
 ### 1.3 Portais das Operadoras
-- Algar Telecom
-- Meu Vivo Empresas
-- BillManager
-- Oi Empresas
-- Claro Empresas
-- Americanet
+- BillManager: portal com autenticação em 2 fatores | precisa de interação manual 
+- Algar Telecom: 
+- Meu Vivo Empresas:
+- Oi Empresas:
+- Claro Empresas:
+- Americanet:
 
 ## 2. Planejamento e Status
 
 Primeira Versão (01/11/22) >> Em desenvolvimento
 - Versão desktop = roda somente na máquina destinada para automações
 - Parte do processo manual
+- Somente o Portal BillManager > CAOA
 
 Curto Prazo (31/12/22) >> Não Iniciado
 - Integração com o Google Drive: ler o Mapa direto da pasta do cliente e transferir as faturas baixadas direto para a pasta
-- Automatizar a execução do programa RPA
-- Expansão para todos os Portais disponíveis 
+- Automatizar a execução do programa RPA: criar programa executável em outras máquinas | Automatizar download e upload do mapa do Google Driver. 
+- Expansão para todos os clientes no BillManager 
 
 Médio Prazo (31/03/22) >> Não Iniciado
 - Leitor do PDF para extrair informações da fatura e preencher o Mapa do Excel
@@ -84,10 +88,10 @@ Longo Prazo (30/06/23) >> Não Iniciado
 ## 5. Tecnologias utilizadas
 
 O projeto utiliza Python junto com as seguintes bibliotecas:
-- Pandas: 
-- Openpyxl: 
-- Tkinter: 
-- Selenium:  
+- Pandas: ler o mapa de faturas e selecionar as faturas pendentes | Ler o arquivo de Setup
+- Openpyxl: ler e escerver no arquivo do mapa de faturas
+- Tkinter: criar a tela do programa
+- Selenium: automatiza funções do driver do navegador | simula um operador mexendo no navegador
 
 
 ## 6. Equipe do Projeto

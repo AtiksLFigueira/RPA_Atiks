@@ -2,8 +2,8 @@
 
 ## Automações de Tarefas
 
-A **ATIKS** é uma empresa de Gestão de Custos de Telecomunicações e TI que tem em seus processos uma sequencias de tarefas manuais. O objetivo do projeto é automatizar parte significativa destes processos para melhoria de produtividade, ganho de gestão e possibilidade de maior controle.
-O programa foi desenvolvido em Phyton e estruturado em 4 diferentes fases, cada qual com seu prazo e escopo.
+A **ATIKS** é uma empresa de Gestão de Custos de Telecomunicações e TI que tem em seus processos uma sequencias de tarefas manuais e repetitivas. O objetivo do projeto é automatizar parte significativa destes processos para melhoria de produtividade, ganho de gestão e possibilidade de maior controle.
+O programa foi desenvolvido em Phyton e estruturado em 4 fases.
 
 ## Índice
 
@@ -25,17 +25,15 @@ Desenvolvimento realizado em Phyton. Primeira versão com software desktop que r
 
 ### 1.1 Processo
 
-- Operador copiar o mapa de faturas atualizado da pasta do cliente no Google Drive para a pasta local na máquina destinada ao RPA, onde o programa está instalado. O mapa não deve ser alterado na rede até que finalize a execução e volte a versão atualizada.
-- Operador abre o programa RPA Atiks, selecionar o Cliente, Portal e Mês. Clica no botão Baixar.
-- Programa verifica no mapa quais as faturas estão pendentes para o Portal selecionado.
+- Operador copia o mapa de faturas atualizado da pasta do cliente no Google Drive para a pasta local na máquina .\clientes\[cliente]\mapa_de_faturas\mapa.xlsx, onde o programa está instalado. O mapa não deve ser alterado na rede até que finalize a execução e volte a versão atualizada.
+- Operador abre o programa RPA Atiks, seleciona o Cliente, Portal e Mês. Clica no botão Baixar.
+- Programa verifica no mapa quais as faturas estão pendentes para o portal e mês selecionado.
 - Programa abre o Portal da Operadora e realiza o login com informações de usuário e senha.
-- Programa busca as faturas para baixar e realiza o download em pasta Download pré-configurada.
-- Programa renomeia o arquivo com o padrão de cada cliente e altera para pasta Renomeado. (não ok)
-- Programa marca o mapa de faturas como Status Baixa = Concluído e Observações = "RPA" (não ok)
-- Operador seleciona outros cliente e outros portais caso necessário | Programa repete operações para opções selecionadas.
+- Programa busca as faturas para baixar e realiza o download em pasta .\clientes\[cliente]\download.
+- Programa renomeia o arquivo com o padrão de cada cliente e altera para pasta Renomeado. (Fase 2)
+- Programa marca o mapa de faturas como Status Baixa = Concluído e Observações = "RPA" (Fase 2)
 - Operador transfere os arquivos da pasta Renomeado para o Google Drive, na pasta correta de acordo com a organização atual.
 - Operador transfere o mapa salvo e atualziado para a pasta do cliente no Google Drive.
-- Operador fecha o programa.
 
 ### 1.2 Organização da Aplicação
 
@@ -51,30 +49,29 @@ O projeto está organizado em um único arquivo [main.py], em classes e funçõe
 
 
 ### 1.3 Portais das Operadoras
-- BillManager: portal com autenticação em 2 fatores | precisa de interação manual 
+- BillManager: portal com autenticação em 2 fatores | precisa de interação manual.
 - Algar Telecom: 
 - Meu Vivo Empresas:
 - Oi Empresas:
 - Claro Empresas:
-- Americanet:
 
 ## 2. Planejamento e Status
 
-Primeira Versão (01/11/22) >> Em desenvolvimento
+Primeira Versão (01/11/22) >> Entregue
 - Versão desktop = roda somente na máquina destinada para automações
 - Parte do processo manual
-- Somente o Portal BillManager > CAOA
+- Somente o Portal BillManager >> CAOA, Raízen, HIAE
 
-Curto Prazo (31/12/22) >> Não Iniciado
+Fase 2 (xx/xx/xx) >> Não Iniciado
 - Integração com o Google Drive: ler o Mapa direto da pasta do cliente e transferir as faturas baixadas direto para a pasta
 - Automatizar a execução do programa RPA: criar programa executável em outras máquinas | Automatizar download e upload do mapa do Google Driver. 
 - Expansão para todos os clientes no BillManager 
 
-Médio Prazo (31/03/22) >> Não Iniciado
-- Leitor do PDF para extrair informações da fatura e preencher o Mapa do Excel
+Médio Prazo (xx/xx/xx) >> Não Iniciado
+- Leitor do PDF para extrair informações da fatura e preencher o Mapa de Faturas
 - RPA Portal Atiks: inserir as faturas no Portal > Converter > Subir
 
-Longo Prazo (30/06/23) >> Não Iniciado
+Longo Prazo (xx/xx/xx) >> Não Iniciado
 - Interface Web = rodar de qualquer máquina (todos analistas tem acesso)
 - Mapa de Faturas integrado com a ferramenta RPA
 
